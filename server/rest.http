@@ -1,0 +1,85 @@
+POST http://localhost:5000/common-api/register
+Content-Type: application/json
+
+{
+  "name": "Manish",
+  "email": "23eg110a14@anurag.edu.in",
+  "password": "123456",
+  "branch": "CSE",
+  "cgpa": 9.0,
+  "rollNumber": "23EG110A14"
+}
+
+###
+POST http://localhost:5000/common-api/login
+Content-Type: application/json
+
+{
+  "email": "23eg110a14@anurag.edu.in",
+  "password": "123456"
+}
+
+###
+GET http://localhost:5000/company-api/
+
+###
+POST http://localhost:5000/company-api/add-company
+Content-Type: application/json
+
+{
+  "companyName": "Adobe",
+  "role": "Full Stack Developer",
+  "packageOffered": 20,
+  "location": "Noida",
+  "minCGPA": 7.2,
+  "allowedBranches": [
+    "CSE",
+    "IT"
+  ],
+  "lastDate": "2026-06-22",
+  "driveDate": "2026-06-28",
+  "description": "Hiring MERN stack developers for product engineering.",
+  "status": "ACTIVE",
+  "logo": "",
+  "totalApplications": 28
+}
+###
+PUT http://localhost:5000/company-api/6a1156ff0434a7399b639e29
+
+###
+POST http://localhost:5000/application-api/apply
+Content-Type: application/json
+
+{
+     "companyId": "6a133952cc8b2a0e7050045a"
+}
+
+###
+GET http://localhost:5000/application-api/my-applications
+
+###
+GET http://localhost:5000/application-api/get-all-applications
+
+###
+PUT http://localhost:5000/application-api/update-status/6a1160918b4be0884f65217f
+Content-Type: application/json
+
+{
+  "status": "Round 2",
+  "remarks": "Good coding performance"
+}
+###
+POST http://localhost:5000/common-api/logout
+
+###
+PUT http://localhost:5000/common-api/update-profile
+Content-Type: application/json
+
+{
+  "cgpa": 8.9,
+  "skills": [
+    "React",
+    "Node.js",
+    "MongoDB"
+  ]
+}

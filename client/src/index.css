@@ -1,0 +1,261 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@500;700;800;900&display=swap');
+@import "tailwindcss";
+
+/* 3-Color Cream, Teal & Coral Theme Overrides */
+:root {
+  --bg-page: #faf0dc; /* Cream */
+  --bg-surface: #ffffff; /* White cards for clean structure */
+  --text-dark: #0b4141; /* Deep Teal */
+  --text-muted: rgba(11, 65, 65, 0.65); /* Deep Teal opacity */
+
+  --brand-primary: #ff6864; /* Vibrant Coral */
+  --brand-secondary: #0b4141; /* Deep Teal */
+
+  --border-subtle: rgba(11, 65, 65, 0.12); /* Deep Teal opacity */
+  --shadow-warm: 0 10px 25px -10px rgba(11, 65, 65, 0.08);
+  --radius-rounded: 20px;
+
+  --transition-smooth: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+body {
+  background-color: var(--bg-page) !important;
+  color: var(--text-dark) !important;
+  font-family: 'Inter', sans-serif;
+  min-height: 100vh;
+}
+
+h1, h2, h3, h4, th {
+  font-family: 'Outfit', sans-serif !important;
+}
+
+/* Translucent Containers */
+.bg-slate-50 {
+  background: transparent !important;
+}
+
+.bg-white {
+  background-color: var(--bg-surface) !important;
+  border: 1.5px solid var(--border-subtle) !important;
+  box-shadow: var(--shadow-warm) !important;
+  transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.2s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.2s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+.bg-white:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 16px 36px -12px rgba(11, 65, 65, 0.16) !important;
+  border-color: rgba(255, 104, 100, 0.3) !important;
+}
+
+.border-slate-200 {
+  border-color: var(--border-subtle) !important;
+}
+
+.border-slate-100 {
+  border-color: rgba(11, 65, 65, 0.08) !important;
+}
+
+/* Sidebar Navigation overrides (Deep Teal background with Cream/Coral details) */
+aside, aside.bg-white {
+  background-color: var(--brand-secondary) !important; /* Deep Teal */
+  color: var(--bg-page) !important; /* Cream */
+  border-right: 1.5px solid rgba(255, 104, 100, 0.15) !important; /* Coral border */
+  box-shadow: none !important;
+  transform: none !important;
+}
+
+aside:hover, aside.bg-white:hover {
+  transform: none !important;
+  box-shadow: none !important;
+  border-color: rgba(255, 104, 100, 0.15) !important;
+}
+
+aside h1, aside h2, aside h3, aside h4, aside h5, aside.sidebar h1, aside.sidebar h2 {
+  color: var(--bg-page) !important; /* Cream */
+}
+
+aside p {
+  color: rgba(250, 240, 220, 0.6) !important; /* Soft Cream */
+}
+
+aside .border-slate-200, aside .border-slate-100, aside .border-t, aside .border-b, aside .border-r {
+  border-color: rgba(250, 240, 220, 0.1) !important;
+}
+
+/* Sidebar navigation links */
+aside a, aside button {
+  transition: var(--transition-smooth) !important;
+}
+
+aside a:not(.bg-blue-50):not(.bg-indigo-50):not(.text-red-500):not(.hover\:text-red-600),
+aside button:not(.bg-blue-50):not(.bg-indigo-50):not(.text-red-500):not(.hover\:text-red-600) {
+  color: rgba(250, 240, 220, 0.7) !important;
+}
+
+aside a:not(.bg-blue-50):not(.bg-indigo-50):hover,
+aside button:not(.bg-blue-50):not(.bg-indigo-50):hover {
+  background-color: rgba(250, 240, 220, 0.08) !important;
+  color: var(--bg-page) !important;
+}
+
+aside a:not(.bg-blue-50):not(.bg-indigo-50):hover *,
+aside button:not(.bg-blue-50):not(.bg-indigo-50):hover * {
+  color: var(--bg-page) !important;
+}
+
+/* Scrollbar overrides */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-page);
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(11, 65, 65, 0.3);
+  border-radius: 99px;
+  border: 2px solid var(--bg-page);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--brand-primary);
+}
+
+/* Primary Accent Overrides (Vibrant Coral / Deep Teal) */
+.text-blue-600, .text-blue-500, .text-indigo-600 {
+  color: var(--brand-primary) !important;
+}
+.bg-blue-50, .bg-indigo-50 {
+  background-color: rgba(255, 104, 100, 0.08) !important;
+  color: var(--brand-primary) !important;
+}
+.border-blue-100, .border-indigo-100 {
+  border-color: rgba(255, 104, 100, 0.18) !important;
+}
+.bg-blue-600, .bg-indigo-600 {
+  background-color: var(--brand-primary) !important;
+  color: var(--bg-surface) !important;
+}
+.shadow-blue-100, .shadow-indigo-100 {
+  box-shadow: 0 10px 25px -10px rgba(255, 104, 100, 0.25) !important;
+}
+
+/* Logo gradient mapping */
+.from-blue-600 {
+  --tw-gradient-from: var(--brand-primary) !important;
+  --tw-gradient-to: var(--brand-secondary) !important;
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to) !important;
+}
+.to-indigo-600 {
+  --tw-gradient-to: var(--brand-secondary) !important;
+}
+
+/* Secondary Accent Overrides (Deep Teal) */
+.text-emerald-600, .text-emerald-700, .text-teal-600, .text-teal-700 {
+  color: var(--brand-secondary) !important;
+}
+.bg-emerald-50, .bg-teal-50 {
+  background-color: rgba(11, 65, 65, 0.08) !important;
+  color: var(--brand-secondary) !important;
+}
+.border-emerald-100, .border-teal-100 {
+  border-color: rgba(11, 65, 65, 0.18) !important;
+}
+.bg-emerald-100, .bg-teal-100 {
+  background-color: rgba(11, 65, 65, 0.06) !important;
+}
+.border-emerald-200, .border-teal-200 {
+  border-color: rgba(11, 65, 65, 0.12) !important;
+}
+.bg-emerald-600, .bg-teal-600 {
+  background-color: var(--brand-secondary) !important;
+  color: var(--bg-page) !important;
+}
+
+/* Button overrides mapping */
+/* Primary action (Blue/Indigo buttons) upgraded with linear-gradient and transition scaling */
+button.bg-blue-600, button.bg-indigo-600 {
+  background: linear-gradient(135deg, var(--brand-primary), var(--brand-secondary)) !important;
+  color: var(--bg-surface) !important;
+  box-shadow: 0 4px 14px 0 rgba(255, 104, 100, 0.25) !important;
+  border-radius: 16px !important;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease !important;
+  cursor: pointer;
+}
+button.bg-blue-600:hover, button.bg-indigo-600:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px 0 rgba(255, 104, 100, 0.35) !important;
+  opacity: 0.95;
+}
+button.bg-blue-600:active, button.bg-indigo-600:active {
+  transform: translateY(0);
+}
+
+/* Secondary action (Green/Emerald/Teal buttons) styled with flat Deep Teal */
+button.bg-emerald-600, button.bg-teal-600 {
+  background: var(--brand-secondary) !important;
+  color: var(--bg-page) !important;
+  box-shadow: 0 4px 14px 0 rgba(11, 65, 65, 0.25) !important;
+  border-radius: 16px !important;
+  border: 1.5px solid var(--brand-secondary) !important;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease !important;
+  cursor: pointer;
+}
+button.bg-emerald-600:hover, button.bg-teal-600:hover {
+  background: rgba(11, 65, 65, 0.9) !important;
+  color: var(--bg-surface) !important;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px 0 rgba(11, 65, 65, 0.35) !important;
+}
+
+/* Warning & Danger states mapped to Vibrant Coral / opacity variations */
+.text-amber-600 {
+  color: var(--brand-primary) !important;
+  font-weight: 700 !important;
+}
+.bg-amber-50 {
+  background-color: rgba(255, 104, 100, 0.08) !important;
+  color: var(--brand-primary) !important;
+}
+
+.text-red-600 {
+  color: var(--brand-primary) !important;
+  font-weight: 900 !important;
+}
+.bg-red-50 {
+  background-color: rgba(255, 104, 100, 0.15) !important;
+  color: var(--brand-primary) !important;
+}
+
+/* Inputs & Forms */
+input, select, textarea {
+  border-radius: 16px !important;
+  background-color: var(--bg-surface) !important;
+  border: 1.5px solid var(--border-subtle) !important;
+  transition: var(--transition-smooth) !important;
+  outline: none;
+}
+
+input:focus, select:focus, textarea:focus {
+  border-color: var(--brand-primary) !important;
+  box-shadow: 0 0 0 4px rgba(255, 104, 100, 0.15) !important;
+}
+
+/* Text Classes */
+.text-slate-900 {
+  color: var(--text-dark) !important;
+}
+.text-slate-500 {
+  color: var(--text-muted) !important;
+}
+.text-slate-600 {
+  color: var(--text-muted) !important;
+}
+
+/* Table overrides */
+thead {
+  background-color: rgba(11, 65, 65, 0.06) !important;
+}
+th {
+  font-weight: 700 !important;
+  color: var(--text-dark) !important;
+}
