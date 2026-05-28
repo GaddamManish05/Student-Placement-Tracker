@@ -3,6 +3,7 @@ import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import { tokenCookieOptions } from "../config/CookieOptions.js";
 import { transporter } from "../config/Nodemailer.js";
+import apiInstance from "../config/brevo.js";
 
 
 // REGISTER
@@ -59,61 +60,37 @@ export const register = async (
 
     try {
 
-        await transporter.sendMail({
+        const sendSmtpEmail = {
 
-            from: process.env.EMAIL_USER,
+            sender: {
+                name: "Smart Placement Tracker",
+                email: process.env.EMAIL_USER
+            },
 
-            to: user.email,
+            to: [
+                {
+                    email: user.email,
+                    name: user.name
+                }
+            ],
 
             subject: "Welcome to Smart Placement Tracker 🎉",
 
-            html: `
+            htmlContent: `
 
-            <div
-                style="
-                    background:#f4f7fb;
-                    padding:40px 20px;
-                    font-family:Arial,sans-serif;
-                "
-            >
+            <div style="background:#f4f7fb;padding:40px 20px;font-family:Arial,sans-serif;">
 
-                <div
-                    style="
-                        max-width:600px;
-                        margin:auto;
-                        background:white;
-                        border-radius:18px;
-                        overflow:hidden;
-                        box-shadow:0 10px 30px rgba(0,0,0,0.08);
-                    "
-                >
+                <div style="max-width:600px;margin:auto;background:white;border-radius:18px;overflow:hidden;box-shadow:0 10px 30px rgba(0,0,0,0.08);">
 
-                    <div
-                        style="
-                            background:linear-gradient(135deg,#0071e3,#2563eb);
-                            padding:35px;
-                            text-align:center;
-                            color:white;
-                        "
-                    >
+                    <div style="background:linear-gradient(135deg,#0071e3,#2563eb);padding:35px;text-align:center;color:white;">
 
-                        <h1
-                            style="
-                                margin:0;
-                                font-size:30px;
-                            "
-                        >
+                        <h1 style="margin:0;font-size:30px;">
 
                             Welcome 🎉
 
                         </h1>
 
-                        <p
-                            style="
-                                margin-top:10px;
-                                opacity:0.9;
-                            "
-                        >
+                        <p style="margin-top:10px;opacity:0.9;font-size:15px;">
 
                             Smart Placement Tracker
 
@@ -121,41 +98,23 @@ export const register = async (
 
                     </div>
 
-                    <div
-                        style="
-                            padding:40px;
-                            color:#333;
-                        "
-                    >
+                    <div style="padding:40px 35px;color:#333;">
 
-                        <h2>
+                        <h2 style="margin-top:0;font-size:24px;color:#111827;">
 
                             Hello ${user.name},
 
                         </h2>
 
-                        <p
-                            style="
-                                line-height:1.8;
-                                color:#4b5563;
-                            "
-                        >
+                        <p style="margin-top:30px;line-height:1.8;color:#4b5563;font-size:15px;">
 
                             Your account has been created successfully.
 
                         </p>
 
-                        <div
-                            style="
-                                background:#eff6ff;
-                                border:1px solid #bfdbfe;
-                                padding:20px;
-                                border-radius:12px;
-                                margin-top:25px;
-                            "
-                        >
+                        <div style="background:#eff6ff;border:1px solid #bfdbfe;border-radius:12px;padding:20px;margin-top:25px;">
 
-                            <p>
+                            <p style="margin:0 0 10px 0;">
 
                                 <strong>Email:</strong>
 
@@ -163,7 +122,7 @@ export const register = async (
 
                             </p>
 
-                            <p>
+                            <p style="margin:0 0 10px 0;">
 
                                 <strong>Branch:</strong>
 
@@ -171,7 +130,7 @@ export const register = async (
 
                             </p>
 
-                            <p>
+                            <p style="margin:0;">
 
                                 <strong>CGPA:</strong>
 
@@ -181,13 +140,7 @@ export const register = async (
 
                         </div>
 
-                        <p
-                            style="
-                                margin-top:30px;
-                                line-height:1.8;
-                                color:#4b5563;
-                            "
-                        >
+                        <p style="margin-top:30px;line-height:1.8;color:#4b5563;font-size:15px;">
 
                             You can now apply for placement drives,
                             track interview rounds,
@@ -197,16 +150,7 @@ export const register = async (
 
                     </div>
 
-                    <div
-                        style="
-                            background:#f9fafb;
-                            padding:20px;
-                            text-align:center;
-                            color:#9ca3af;
-                            font-size:13px;
-                            border-top:1px solid #e5e7eb;
-                        "
-                    >
+                    <div style="background:#f9fafb;padding:20px;text-align:center;color:#9ca3af;font-size:13px;border-top:1px solid #e5e7eb;">
 
                         Smart Placement Tracker © 2026
 
@@ -217,18 +161,15 @@ export const register = async (
             </div>
 
             `
-        });
+        };
 
-        console.log(
-            "REGISTRATION MAIL SENT"
-        );
+        const data = await apiInstance.sendTransacEmail(sendSmtpEmail);
+
+        console.log("REGISTRATION MAIL SENT:", data);
 
     } catch(err) {
 
-        console.log(
-            "MAIL ERROR:",
-            err.message
-        );
+        console.log("MAIL ERROR:", err);
 
     }
 

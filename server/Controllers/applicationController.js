@@ -2,7 +2,7 @@ import Application from "../Models/applicationModel.js";
 
 import Company from "../Models/companyModel.js";
 import NotificationModel from "../Models/notificationModel.js";
-import apiInstance from "../config/Brevo.js";
+import apiInstance from "../config/brevo.js";
 
 // APPLY TO COMPANY
 export const applyToCompany = async (req,res) => {
