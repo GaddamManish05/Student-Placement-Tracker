@@ -30,7 +30,7 @@ export const addCompany = async (
       description,
 
     } = req.body;
-
+    console.log("from creating companies",req.body)
     // ==================================
     // VALIDATION
     // ==================================
@@ -114,7 +114,7 @@ export const addCompany = async (
       description:
       description || "",
     });
-
+    console.log("Company Created");
     // ==================================
     // RESPONSE
     // ==================================
@@ -155,7 +155,7 @@ export const getCompanies = async (
             isDeleted: false
         }).sort({ createdAt: -1 });
 
-
+        console.log("Set of companies")
         res.status(200).json({
             success: true,
             companies
@@ -184,7 +184,7 @@ export const deleteCompany = async (
         const company = await Company.findById(
             req.params.id
         );
-
+        console.log("Company Deleted")
         if (!company || company.isDeleted) {
 
             return res.status(404).json({
@@ -317,6 +317,7 @@ async (
     // ==================================
     // RESPONSE
     // ==================================
+    console.log("Company Updated");
     return res.status(200).json({
 
       success: true,

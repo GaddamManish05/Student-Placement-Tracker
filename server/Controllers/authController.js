@@ -292,7 +292,7 @@ export const login = async (
       token,
       tokenCookieOptions
     );
-
+    console.log("from login :",req.body);
     // ==================================
     // RESPONSE
     // ==================================
@@ -361,7 +361,7 @@ export const currentUser = async (
 ) => {
 
     try {
-
+        console.log("current user :",req.user);
         return res.status(200).json({
 
             payload: req.user
@@ -454,6 +454,7 @@ export const updateProfile = async (
         // ======================
 
         await user.save();
+        console.log("from updated progile :",user);
 
         return res.status(200).json({
 
