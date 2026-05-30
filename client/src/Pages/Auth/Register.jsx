@@ -52,7 +52,7 @@ const Register = () => {
   // =========================
   useEffect(() => {
     if (isAuthenticated && currentUser) {
-      navigate("/dashboard");
+      navigate("/login");
     }
   }, [isAuthenticated, currentUser, navigate]);
 
