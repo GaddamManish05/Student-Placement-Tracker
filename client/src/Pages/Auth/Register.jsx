@@ -50,11 +50,6 @@ const Register = () => {
   // =========================
   // REDIRECT
   // =========================
-  useEffect(() => {
-    if (isAuthenticated && currentUser) {
-      navigate("/login");
-    }
-  }, [isAuthenticated, currentUser, navigate]);
 
   // =========================
   // SUBMIT HANDLER

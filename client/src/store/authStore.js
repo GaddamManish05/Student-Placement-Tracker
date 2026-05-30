@@ -62,11 +62,9 @@ const useAuthStore = create((set, get) => ({
         userData
       );
 
-      const currentUser = response.data.payload;
-
       set({
-        currentUser,
-        isAuthenticated: true,
+        currentUser : null,
+        isAuthenticated: false,
         isLoading: false,
       });
 
