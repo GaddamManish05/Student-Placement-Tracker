@@ -8,6 +8,9 @@ import Notification from "../Models/notificationModel.js";
 
 import {transporter} from '../config/Nodemailer.js'
 
+import apiInstance from "../config/brevo.js";
+
+
 // ======================================
 // ADMIN DASHBOARD STATS
 // ======================================
