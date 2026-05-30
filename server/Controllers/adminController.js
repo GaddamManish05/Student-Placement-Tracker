@@ -949,8 +949,11 @@ await Notification.create({
                   const data = await apiInstance.sendTransacEmail(sendSmtpEmail);
                   console.log("APPLICATION STATUS MAIL SENT:", data);
               } catch (err) {
-                  console.error("APPLICATION STATUS MAIL ERROR:", err.message || err);
-              }
+  console.error(
+    "APPLICATION STATUS MAIL ERROR:",
+    JSON.stringify(err.response?.body || err, null, 2)
+  );
+}
   })();
 
     // ==================================
