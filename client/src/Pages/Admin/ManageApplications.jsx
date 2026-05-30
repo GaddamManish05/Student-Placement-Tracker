@@ -325,9 +325,7 @@ console.log("applications :",applications);
 
                               <h4 className="font-bold text-slate-900">
 
-                                {
-                                  app.studentId.name
-                                }
+                                {app.studentId?.name || "Unknown Student"}
 
                               </h4>
 
@@ -347,7 +345,7 @@ console.log("applications :",applications);
                         <td className="px-8 py-6 font-bold text-slate-700">
 
                           {
-                            app.companyId?.companyName
+                            app.companyId?.companyName || "N/A"
                           }
 
                         </td>
@@ -356,7 +354,7 @@ console.log("applications :",applications);
                         <td className="px-8 py-6 text-sm text-slate-600">
 
                           {
-                            app.companyId.role
+                            app.companyId.role || "N/A"
                           }
 
                         </td>
@@ -365,7 +363,7 @@ console.log("applications :",applications);
                         <td className="px-8 py-6 text-sm text-slate-600">
 
                           {
-                            app.studentId.branch
+                            app.studentId.branch || "N/A"
                           }
 
                         </td>
@@ -591,3 +589,4 @@ const getStatusStyles =
 };
 
 export default ManageApplications;
+
