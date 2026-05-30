@@ -752,7 +752,7 @@ async (req, res) => {
     } = req.params;
 
     const {
-      status,
+      status,remarks
     } = req.body;
 
     // ==================================
