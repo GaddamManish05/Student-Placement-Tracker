@@ -354,7 +354,7 @@ console.log("applications :",applications);
                         <td className="px-8 py-6 text-sm text-slate-600">
 
                           {
-                            app.companyId.role || "N/A"
+                            app.companyId?.role || "N/A"
                           }
 
                         </td>
@@ -363,7 +363,7 @@ console.log("applications :",applications);
                         <td className="px-8 py-6 text-sm text-slate-600">
 
                           {
-                            app.studentId.branch || "N/A"
+                            app.studentId?.branch || "N/A"
                           }
 
                         </td>
