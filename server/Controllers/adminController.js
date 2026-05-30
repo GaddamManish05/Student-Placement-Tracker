@@ -825,7 +825,7 @@ await application.save();
 // ==================================
 await application.populate(
   "companyId",
-  "companyName",
+  "companyName role",
 );
 
 let user = await User.findById(application.studentId);
@@ -879,7 +879,7 @@ await Notification.create({
               try {
                   if (!process.env.BREVO_API_KEY) {
                       console.log("No BREVO_API_KEY found. Logging status update email locally:");
-                      console.log(`To: ${application.studentId.email}, Subject: Status Updated, Status: ${status}`);
+                      console.log(`To: ${user.email}, Subject: Status Updated, Status: ${status}`);
                       return;
                   }
   
@@ -908,8 +908,8 @@ await Notification.create({
                       },
                       to: [
                           {
-                              email: application.studentId.email,
-                              name: application.studentId.name || "Candidate"
+                              email:user.email,
+                              name: user.name || "Candidate"
                           }
                       ],
                       subject: `Application Status Alert: ${application.companyId.companyName} - ${status} ${statusIcon}`,
@@ -921,7 +921,7 @@ await Notification.create({
                                       <p style="margin-top: 10px; opacity: 0.8; font-size: 14px; uppercase; tracking-wider;">PlacementHub Alerts</p>
                                   </div>
                                   <div style="padding: 40px; color: #0b4141;">
-                                      <h2 style="margin-top: 0; font-size: 20px; color: #0b4141;">Hello ${application.studentId.name},</h2>
+                                      <h2 style="margin-top: 0; font-size: 20px; color: #0b4141;">Hello ${user.name},</h2>
                                       <p style="line-height: 1.6; color: rgba(11, 65, 65, 0.8); font-size: 15px;">
                                           There is a status update on your application for the role of <strong>${application.companyId.role}</strong> at <strong>${application.companyId.companyName}</strong>.
                                       </p>
