@@ -7,7 +7,8 @@ import {
   getApplications,
   getStudents,
   toggleStudentStatus,
-  getAnalytics
+  getAnalytics,
+  updateApplicationStatus
 } from "../Controllers/adminController.js";
 
 import {
@@ -81,5 +82,14 @@ adminRoutes.get(
 // ======================================
 // UPDATE APPLICATION STATUS
 // ======================================
+adminRoutes.patch(
 
+  "/applications/:id/status",
+
+  isAuthenticated,
+
+  isAdmin,
+
+  updateApplicationStatus
+);
 export default adminRoutes;

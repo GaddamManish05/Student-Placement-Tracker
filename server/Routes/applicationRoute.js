@@ -3,7 +3,6 @@ import express from "express";
 import {
     applyToCompany,
     myApplications,
-    updateApplicationStatus,
     getAllApplications
 } from "../Controllers/applicationController.js";
 
@@ -28,13 +27,6 @@ applicationRoutes.get(
     "/my-applications",
     isAuthenticated,
     myApplications
-);
-
-applicationRoutes.put(
-    "/update-status/:id",
-    isAuthenticated,
-    isAdmin,
-    updateApplicationStatus
 );
 
 
